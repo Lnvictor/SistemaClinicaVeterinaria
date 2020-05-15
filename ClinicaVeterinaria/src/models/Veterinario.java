@@ -1,14 +1,30 @@
 package models;
 
+import java.util.*;
+
 public class Veterinario {
-	String nom_vet;
-	String end_vet;
-	String tel_vet;
+
+	private String nom_vet;
+
+	private String end_vet;
+
+	private String tel_vet;
+
+	private List<Consulta> consultas;
 
 	public Veterinario(String nom_vet, String end_vet, String tel_vet) {
 		this.nom_vet = nom_vet;
 		this.end_vet = end_vet;
 		this.tel_vet = tel_vet;
+		this.consultas = new ArrayList<>();
+	}
+
+	public List<Consulta> getConsultas() {
+		return consultas;
+	}
+
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
 	}
 
 	public String getNom_vet() {
