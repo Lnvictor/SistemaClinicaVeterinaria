@@ -1,7 +1,7 @@
 package models;
 
 public class Exame {
-	String des_exame;
+	private String des_exame;
 
 	public Exame(String des_exame) {
 		this.des_exame = des_exame;
