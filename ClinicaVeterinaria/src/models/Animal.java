@@ -12,11 +12,23 @@ public class Animal {
 	
 	private ArrayList<Cliente> clientes;
 	
+	private ArrayList<Tratamento> tratamentos;
+	
 	public Animal(String nome, Integer idade, Integer sexo) {
 		this.nome_animal = nome;
 		this.idade_animal = idade;
 		this.sexo_animal = sexo;
 	}
+	
+	public ArrayList<Tratamento> getTratamentos() {
+		return tratamentos;
+	}
+
+	public void setTratamentos(ArrayList<Tratamento> tratamentos) {
+		this.tratamentos = tratamentos;
+	}
+
+
 
 	public String getNome_animal() {
 		return nome_animal;
