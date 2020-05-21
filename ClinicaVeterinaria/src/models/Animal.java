@@ -20,6 +20,7 @@ public class Animal {
 		this.nome_animal = nome;
 		this.idade_animal = idade;
 		this.sexo_animal = sexo;
+		this.tratamentos = new ArrayList<>();
 	}
 
 	public Especie getEspecie() {
@@ -42,8 +43,8 @@ public class Animal {
 		return tratamentos;
 	}
 
-	public void setTratamentos(ArrayList<Tratamento> tratamentos) {
-		this.tratamentos = tratamentos;
+	public void addTratamentos(Tratamento tratamento) {
+		this.tratamentos.add(tratamento);
 	}
 
 	public String getNome_animal() {

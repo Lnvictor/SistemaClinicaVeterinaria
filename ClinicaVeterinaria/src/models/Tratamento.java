@@ -16,6 +16,7 @@ public class Tratamento {
 	public Tratamento(Date inicio, Date fim) {
 		this.dat_ini = inicio;
 		this.dat_fim = fim;
+		this.consultas = new ArrayList<>();
 	}
 
 	public Tratamento(Date inicio, Date fim, ArrayList<Consulta> consultas) {
@@ -36,8 +37,8 @@ public class Tratamento {
 		return consultas;
 	}
 
-	public void setConsultas(ArrayList<Consulta> consultas) {
-		this.consultas = consultas;
+	public void addConsultas(Consulta consulta) {
+		this.consultas.add(consulta);
 	}
 
 	public Date getDat_ini() {

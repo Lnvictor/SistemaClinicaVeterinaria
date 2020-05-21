@@ -23,8 +23,8 @@ public class Veterinario {
 		return consultas;
 	}
 
-	public void setConsultas(List<Consulta> consultas) {
-		this.consultas = consultas;
+	public void addConsultas(Consulta consulta) {
+		this.consultas.add(consulta);
 	}
 
 	public String getNom_vet() {
@@ -39,11 +39,6 @@ public class Veterinario {
 		return end_vet;
 	}
 
-	@Override
-	public String toString() {
-		return "Veterinario [nom_vet=" + nom_vet + ", end_vet=" + end_vet + ", tel_vet=" + tel_vet + "]";
-	}
-
 	public void setEnd_vet(String end_vet) {
 		this.end_vet = end_vet;
 	}
@@ -55,5 +50,9 @@ public class Veterinario {
 	public void setTel_vet(String tel_vet) {
 		this.tel_vet = tel_vet;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Veterinario [nom_vet=" + nom_vet + ", end_vet=" + end_vet + ", tel_vet=" + tel_vet + "]";
+	}
 }

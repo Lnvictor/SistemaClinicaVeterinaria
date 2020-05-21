@@ -34,8 +34,8 @@ public class Consulta {
 		return exames;
 	}
 
-	public void setExames(List<Exame> exames) {
-		this.exames = exames;
+	public void addExames(Exame exame) {
+		this.exames.add(exame);
 	}
 
 	public Veterinario getVeterinario() {
