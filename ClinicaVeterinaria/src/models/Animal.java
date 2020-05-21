@@ -5,21 +5,39 @@ import java.util.ArrayList;
 public class Animal {
 
 	private String nome_animal;
-	
+
 	private Integer idade_animal;
-	
+
 	private Integer sexo_animal;
-	
-	private ArrayList<Cliente> clientes;
-	
+
+	private Cliente cliente;
+
 	private ArrayList<Tratamento> tratamentos;
-	
+
+	private Especie especie;
+
 	public Animal(String nome, Integer idade, Integer sexo) {
 		this.nome_animal = nome;
 		this.idade_animal = idade;
 		this.sexo_animal = sexo;
 	}
-	
+
+	public Especie getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public ArrayList<Tratamento> getTratamentos() {
 		return tratamentos;
 	}
@@ -27,8 +45,6 @@ public class Animal {
 	public void setTratamentos(ArrayList<Tratamento> tratamentos) {
 		this.tratamentos = tratamentos;
 	}
-
-
 
 	public String getNome_animal() {
 		return nome_animal;
@@ -52,13 +68,5 @@ public class Animal {
 
 	public void setSexo_animal(Integer sexo_animal) {
 		this.sexo_animal = sexo_animal;
-	}
-
-	public ArrayList<Cliente> getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(ArrayList<Cliente> clientes) {
-		this.clientes = clientes;
 	}
 }
