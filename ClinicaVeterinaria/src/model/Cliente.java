@@ -1,8 +1,10 @@
-package models;
+package model;
 
 import java.util.ArrayList;
 
 public class Cliente {
+	
+	private Integer id;
 
 	private String nome_cli;
 
@@ -10,18 +12,23 @@ public class Cliente {
 
 	private String tel_cli;
 
-	private Long cep_cli;
+	private String cep_cli;
 
 	private String email_cli;
 
 	private ArrayList<Animal> animais;
 
-	public Cliente(String nome, String endereco, String telefone, Long cep, String email) {
+	public Cliente(Integer id, String nome, String endereco, String telefone, String cep, String email) {
+		this.id = id;
 		this.nome_cli = nome;
 		this.end_cli = endereco;
 		this.tel_cli = telefone;
 		this.cep_cli = cep;
 		this.email_cli = email;
+	}
+	
+	public Integer getId() {
+		return this.id;
 	}
 
 	public ArrayList<Animal> getAnimais() {
@@ -56,11 +63,11 @@ public class Cliente {
 		this.tel_cli = tel_cli;
 	}
 
-	public Long getCep_cli() {
+	public String getCep_cli() {
 		return cep_cli;
 	}
 
-	public void setCep_cli(Long cep_cli) {
+	public void setCep_cli(String cep_cli) {
 		this.cep_cli = cep_cli;
 	}
 
