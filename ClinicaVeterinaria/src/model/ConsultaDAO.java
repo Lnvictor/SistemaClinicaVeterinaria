@@ -21,6 +21,8 @@ public class ConsultaDAO extends Observable {
 	public void addConsulta(Consulta consulta) {
 		this.consultas.put(id, consulta);
 		id++;
+		setChanged();
+		notifyObservers(consulta);
 	}
 	
 	public Map<Integer, Consulta> getAllConsultas(){
@@ -33,23 +35,8 @@ public class ConsultaDAO extends Observable {
 		}
 		return instance;
 	}
-
-	public static void setInstance(ConsultaDAO instance) {
-		ConsultaDAO.instance = instance;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setConsultas(Map<Integer, Consulta> consultas) {
-		this.consultas = consultas;
-	}
 	
-	
-	
+	public Consulta getConsultaById(int id) {
+		return this.consultas.get(id);
+	}
 }

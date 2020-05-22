@@ -18,11 +18,20 @@ public class Animal {
 
 	private Especie especie;
 
-	public Animal(Integer id, String nome, Integer idade, Integer sexo) {
+	public Animal(Integer id, String nome, Integer idade, Integer sexo, Cliente cliente) {
 		this.id = id;
 		this.nome_animal = nome;
 		this.idade_animal = idade;
 		this.sexo_animal = sexo;
+		this.cliente = cliente;
+		this.tratamentos = new ArrayList<>();
+	}
+	
+	public Animal(String nome, Integer idade, Integer sexo, Cliente cliente) {
+		this.nome_animal = nome;
+		this.idade_animal = idade;
+		this.sexo_animal = sexo;
+		this.cliente = cliente;
 		this.tratamentos = new ArrayList<>();
 	}
 	

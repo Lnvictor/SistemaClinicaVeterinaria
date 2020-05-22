@@ -61,4 +61,10 @@ public class Consulta {
 	public void setHistorico(String historico) {
 		this.historico = historico;
 	}
+
+	@Override
+	public String toString() {
+		return "Consulta [tratamento=" + tratamento + ", exames=" + exames + ", veterinario=" + veterinario
+				+ ", date_con=" + date_con + ", historico=" + historico + "]";
+	}
 }

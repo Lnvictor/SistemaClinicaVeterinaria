@@ -25,6 +25,16 @@ public class Cliente {
 		this.tel_cli = telefone;
 		this.cep_cli = cep;
 		this.email_cli = email;
+		this.animais = new ArrayList<>();
+	}
+	
+	public Cliente(String nome, String endereco, String telefone, String cep, String email) {
+		this.nome_cli = nome;
+		this.end_cli = endereco;
+		this.tel_cli = telefone;
+		this.cep_cli = cep;
+		this.email_cli = email;
+		this.animais = new ArrayList<>();
 	}
 	
 	public Integer getId() {
@@ -34,11 +44,15 @@ public class Cliente {
 	public ArrayList<Animal> getAnimais() {
 		return animais;
 	}
-
+	
 	public void setAnimais(ArrayList<Animal> animais) {
 		this.animais = animais;
 	}
 
+	public void addAnimais(Animal animal) {
+		this.animais.add(animal);
+	}
+	
 	public String getNome_cli() {
 		return nome_cli;
 	}
@@ -81,7 +95,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [nome_cli=" + nome_cli + ", end_cli=" + end_cli + ", tel_cli=" + tel_cli + ", cep_cli="
-				+ cep_cli + ", email_cli=" + email_cli + "]";
+		return "Cliente [id=" + id + ", nome_cli=" + nome_cli + ", end_cli=" + end_cli + ", tel_cli=" + tel_cli
+				+ ", cep_cli=" + cep_cli + ", email_cli=" + email_cli + ", animais=" + animais + "]";
 	}
 }

@@ -22,15 +22,19 @@ public class AnimalDAO extends Observable {
 	}
 
 	// Create
-	public void addAnimal(String nome, Integer idade, Integer sexo) {
-		Animal animal = new Animal(id, nome, idade, sexo);
+	public void addAnimal(Animal animal) {
+		Animal newAnimal = new Animal(id, animal.getNome_animal(), animal.getIdade_animal(), animal.getSexo_animal(),
+				animal.getCliente());
+		this.animais.put(id, newAnimal);
 		id++;
-		this.animais.put(id, animal);
 		setChanged();
-		notifyObservers(animal);
+		notifyObservers(newAnimal);
 	}
 
 	public Map<Integer, Animal> getAllAnimais() {
+		for (Map.Entry<Integer, Animal> animal : animais.entrySet()) {
+			animal.getValue().setCliente((ClienteDAO.getInstance().getClienteById(animal.getKey())));
+        }
 		return animais;
 	}
 

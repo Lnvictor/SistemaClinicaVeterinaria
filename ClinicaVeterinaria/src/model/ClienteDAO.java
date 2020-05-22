@@ -14,7 +14,6 @@ public class ClienteDAO extends Observable {
 		id = 0;
 	}
 
-	// Singleton
 	public static ClienteDAO getInstance() {
 		if (instance == null) {
 			instance = new ClienteDAO();
@@ -22,34 +21,27 @@ public class ClienteDAO extends Observable {
 		return instance;
 	}
 
-// Partial CRUD    
-	// Create
-	public void addCliente(String nome, String endereco, String telefone, String cep, String email) {
-		Cliente cliente = new Cliente(id, nome, endereco, telefone, cep, email);
+	public void addCliente(Cliente cliente) {
+		Cliente newCliente = new Cliente(id, cliente.getNome_cli(), cliente.getEnd_cli(), cliente.getTel_cli(),
+				cliente.getCep_cli(), cliente.getEmail_cli());
+		this.clientes.put(id, newCliente);
 		id++;
-		this.clientes.put(id, cliente);
 		setChanged();
-		notifyObservers(cliente);
-	}	
-	
-	// RetrieveAll
+		notifyObservers(newCliente);
+	}
+
 	public Map<Integer, Cliente> getAllClientes() {
+		for (Map.Entry<Integer, Cliente> cliente : clientes.entrySet()) {
+        	cliente.getValue().addAnimais(AnimalDAO.getInstance().getAnimalById(cliente.getKey()));
+        }
+		
 		return clientes;
 	}
 
-	// RetrieveById
-	// Os grupos devem implementar as modificacoes para permitir que um cliente seja
-	// encontrado a partir de um id (inteiro).
-	// Sugestao, ao inves de usar um List, usar um Map.
 	public Cliente getClienteById(int id) {
 		return this.clientes.get(id);
 	}
 
-	// RetrieveByName
-
-	// Updade
-
-	// Delete
 	public void deleteCliente(Cliente cliente) {
 		this.clientes.remove(cliente.getId());
 	}
