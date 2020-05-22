@@ -10,6 +10,10 @@ import java.util.Observer;
 import java.util.Scanner;
 import controller.Controller;
 import java.util.List;
+import java.util.Map;
+
+import model.Animal;
+import model.Cliente;
 import model.ClienteDAO;
 
 /**
@@ -25,19 +29,28 @@ public class ClinicaVeterinaria implements Observer{
     }
     
     public void listaClientes(){
-        List clientes = Controller.getAllClientes();
-        for (Object cliente : clientes){
-            System.out.println(cliente);
+        Map<Integer, Cliente> clientes = Controller.getAllClientes();
+        for (Map.Entry<Integer, Cliente> cliente : clientes.entrySet()) {
+        	System.out.println(cliente.getValue());
+        }
+    }
+    
+    public void listaAnimais() {
+    	Map<Integer, Animal> animais = Controller.getAllAnimais();
+        for (Map.Entry<Integer, Animal> animal : animais.entrySet()) {
+        	System.out.println(animal.getValue());
         }
     }
     
     public void menuPrincipal(){
         Scanner in = new Scanner(System.in);
-        Controller.setObserver(this);
+        Controller.setClienteObserver(this);
         while (true){
             System.out.println("1- Insere Cliente");
             System.out.println("2- Lista Clientes");
-            System.out.println("3- Encerra");
+            System.out.println("3- Insere Animal");
+            System.out.println("4- Lista Animal");
+            System.out.println("5- Encerra");
             int opcao = in.nextInt();
             switch (opcao){
                 case 1:
@@ -47,6 +60,12 @@ public class ClinicaVeterinaria implements Observer{
                     listaClientes();
                     break;
                 case 3:
+                    Controller.addAnimal("Dog caramelo", 4, 0);
+                    break;
+                case 4:
+                    listaAnimais();
+                    break;
+                case 5:
                     return;
             }
         }

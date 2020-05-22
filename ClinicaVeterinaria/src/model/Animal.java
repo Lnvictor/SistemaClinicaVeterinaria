@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Animal {
+	
+	private Integer id;
 
 	private String nome_animal;
 
@@ -16,11 +18,16 @@ public class Animal {
 
 	private Especie especie;
 
-	public Animal(String nome, Integer idade, Integer sexo) {
+	public Animal(Integer id, String nome, Integer idade, Integer sexo) {
+		this.id = id;
 		this.nome_animal = nome;
 		this.idade_animal = idade;
 		this.sexo_animal = sexo;
 		this.tratamentos = new ArrayList<>();
+	}
+	
+	public Integer getId() {
+		return this.id;
 	}
 
 	public Especie getEspecie() {
@@ -69,5 +76,11 @@ public class Animal {
 
 	public void setSexo_animal(Integer sexo_animal) {
 		this.sexo_animal = sexo_animal;
+	}
+
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", nome_animal=" + nome_animal + ", idade_animal=" + idade_animal + ", sexo_animal="
+				+ sexo_animal + ", cliente=" + cliente + ", tratamentos=" + tratamentos + ", especie=" + especie + "]";
 	}
 }
