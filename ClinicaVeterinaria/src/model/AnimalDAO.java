@@ -1,17 +1,22 @@
 package model;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class AnimalDAO extends Observable {
+public class AnimalDAO extends DAO {
+	
 	private static AnimalDAO instance;
-	private Map<Integer, Animal> animais;
-	private int id;
 
 	private AnimalDAO() {
-		this.animais = new HashMap<>();
-		this.id = 0;
+		DAO.getConnection();
 	}
 
 	public static AnimalDAO getInstance() {
@@ -22,27 +27,62 @@ public class AnimalDAO extends Observable {
 	}
 
 	// Create
-	public void addAnimal(Animal animal) {
-		Animal newAnimal = new Animal(id, animal.getNome_animal(), animal.getIdade_animal(), animal.getSexo_animal(),
-				animal.getCliente());
-		this.animais.put(id, newAnimal);
-		id++;
-		setChanged();
-		notifyObservers(newAnimal);
-	}
-
-	public Map<Integer, Animal> getAllAnimais() {
-		for (Map.Entry<Integer, Animal> animal : animais.entrySet()) {
-			animal.getValue().setCliente((ClienteDAO.getInstance().getClienteById(animal.getKey())));
+	public void addAnimal(String nome, Integer idCliente, Integer anoNasc, String sexo) {
+		try {
+            PreparedStatement stmt;
+            int newId = lastId("ANIMAL", "id") + 1;
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO ANIMAL (id, id_cliente, nome, sexo, ano_nasc) VALUES (?,?,?,?,?)");
+            stmt.setInt(1, newId);
+            stmt.setInt(2, idCliente);
+            stmt.setString(3, nome);
+            stmt.setString(4, sexo);
+            stmt.setInt(5, anoNasc);
+            executeUpdate(stmt);
+        } catch (SQLException ex) {
+            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-		return animais;
 	}
 
-	public Animal getAnimalById(int id) {
-		return this.animais.get(id);
+	public List getAllAnimais() {
+		List<Animal> animais = new ArrayList();
+        ResultSet rs = getResultSet("SELECT * FROM ANIMAL");
+        try {
+            while (rs.next()) {
+            	animais.add(buildObject(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return animais;
 	}
-
-	public void deleteAnimal(Animal animal) {
-		this.animais.remove(animal.getId());
-	}
+	
+	 // get Animais of Client
+    public List getAnimaisOfClient(Integer idCliente) {
+        List<Animal> animais = new ArrayList();
+        PreparedStatement stmt;
+        try {
+        	stmt = DAO.getConnection().prepareStatement("SELECT * FROM ANIMAL WHERE id_cliente = ?");
+            stmt.setInt(1, idCliente);
+            ResultSet rs = stmt.executeQuery();
+        	while (rs.next()) {
+            	animais.add(buildObject(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return animais;
+    }
+	
+	private Animal buildObject(ResultSet rs) {
+		Animal animal = null;
+        try {
+        	Cliente cliente = null;
+        	cliente = ClienteDAO.getInstance().getClienteById(rs.getInt("id_cliente"));
+        	
+        	animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("ano_nasc"), rs.getString("sexo"), cliente);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return animal;
+    }
 }

@@ -1,101 +1,47 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Cliente {
-	
-	private Integer id;
+    private int id;
+    private String nome;
+    private String endereco;
+    private String telefone;
+    private String cep;
+    private String email;
 
-	private String nome_cli;
+    public Cliente(int id, String nome, String endereco, String telefone, String cep) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.cep = cep;
+    }
+    
+    public int getId(){
+        return id;
+    }
 
-	private String end_cli;
+    public String getNome() {
+        return nome;
+    }
 
-	private String tel_cli;
+    public String getEndereco() {
+        return endereco;
+    }
 
-	private String cep_cli;
+    public String getTelefone() {
+        return telefone;
+    }
 
-	private String email_cli;
+    public String getCep() {
+        return cep;
+    }
 
-	private ArrayList<Animal> animais;
-
-	public Cliente(Integer id, String nome, String endereco, String telefone, String cep, String email) {
-		this.id = id;
-		this.nome_cli = nome;
-		this.end_cli = endereco;
-		this.tel_cli = telefone;
-		this.cep_cli = cep;
-		this.email_cli = email;
-		this.animais = new ArrayList<>();
-	}
-	
-	public Cliente(String nome, String endereco, String telefone, String cep, String email) {
-		this.nome_cli = nome;
-		this.end_cli = endereco;
-		this.tel_cli = telefone;
-		this.cep_cli = cep;
-		this.email_cli = email;
-		this.animais = new ArrayList<>();
-	}
-	
-	public Integer getId() {
-		return this.id;
-	}
-
-	public ArrayList<Animal> getAnimais() {
-		return animais;
-	}
-	
-	public void setAnimais(ArrayList<Animal> animais) {
-		this.animais = animais;
-	}
-
-	public void addAnimais(Animal animal) {
-		this.animais.add(animal);
-	}
-	
-	public String getNome_cli() {
-		return nome_cli;
-	}
-
-	public void setNome_cli(String nome_cli) {
-		this.nome_cli = nome_cli;
-	}
-
-	public String getEnd_cli() {
-		return end_cli;
-	}
-
-	public void setEnd_cli(String end_cli) {
-		this.end_cli = end_cli;
-	}
-
-	public String getTel_cli() {
-		return tel_cli;
-	}
-
-	public void setTel_cli(String tel_cli) {
-		this.tel_cli = tel_cli;
-	}
-
-	public String getCep_cli() {
-		return cep_cli;
-	}
-
-	public void setCep_cli(String cep_cli) {
-		this.cep_cli = cep_cli;
-	}
-
-	public String getEmail_cli() {
-		return email_cli;
-	}
-
-	public void setEmail_cli(String email_cli) {
-		this.email_cli = email_cli;
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome_cli=" + nome_cli + ", end_cli=" + end_cli + ", tel_cli=" + tel_cli
-				+ ", cep_cli=" + cep_cli + ", email_cli=" + email_cli + ", animais=" + animais + "]";
-	}
+    public String getEmail() {
+        return email;
+    }
+    
+    public String toString(){
+        return this.nome;
+    }
+    
 }

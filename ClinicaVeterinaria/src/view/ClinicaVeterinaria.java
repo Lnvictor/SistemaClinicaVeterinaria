@@ -32,65 +32,65 @@ public class ClinicaVeterinaria implements Observer{
     }
     
     public void listaClientes(){
-        Map<Integer, Cliente> clientes = Controller.getAllClientes();
-        for (Map.Entry<Integer, Cliente> cliente : clientes.entrySet()) {
-        	System.out.println(cliente.getValue());
+        List clientes = Controller.getAllClientes();
+        for (Object cliente : clientes){
+            System.out.println(cliente);
         }
     }
     
-    public void listaAnimais() {
-    	Map<Integer, Animal> animais = Controller.getAllAnimais();
-        for (Map.Entry<Integer, Animal> animal : animais.entrySet()) {
-        	System.out.println(animal.getValue());
+    public void listaAnimais(){
+        List animais = Controller.getAllAnimais();
+        for (Object animal : animais){
+            System.out.println(animal);
         }
     }
-    
-    public void listaConsulta() {
-    	Map<Integer, Consulta> consultas = Controller.getAllConsultas();
-        for (Map.Entry<Integer, Consulta> consulta : consultas.entrySet()) {
-        	System.out.println(consulta.getValue());
+    public void listaAnimaisOfClients(Integer idCliente){
+        List animais = Controller.getAnimaisOfClient(idCliente);
+        for (Object animal : animais){
+            System.out.println(animal);
         }
     }
+   
     
     public void menuPrincipal(){
-        Scanner in = new Scanner(System.in);
-        Controller.setClienteObserver(this);
-        Controller.setAnimalObserver(this);
-        Controller.setConsultaObserver(this);
-        while (true){
-            System.out.println("1- Insere Cliente");
-            System.out.println("2- Lista Clientes");
-            System.out.println("3- Lista Animal");
-            System.out.println("4- Insere Consulta");
-            System.out.println("5- Lista Consulta");
-            System.out.println("6- Encerra");
-            int opcao = in.nextInt();
-            switch (opcao){
-                case 1:
-                	Cliente cliente = new Cliente("Plinio Vilela", "endereco", "(19)98787-9988", "15675-900", "tste@tewse.com");
-                	Animal animal = new Animal("Dog caramelo", 4, 0, cliente);
-                    Controller.addCliente(cliente);
-                    Controller.addAnimal(animal);
-                    break;
-                case 2:
-                    listaClientes();
-                    break;
-                case 3:
-                    listaAnimais();
-                    break;
-                case 4:
-                    Consulta consulta = new Consulta(new Date(), "historico");
-                    Controller.addConsulta(consulta);
-                    break;
-                case 5:
-                    listaConsulta();
-                    break;
-                case 6:
-                    return;
-            }
-        }
+    	 Scanner in = new Scanner(System.in);
+         while (true){
+             System.out.println("0- Encerrar");
+             System.out.println("1- Insere Cliente");
+             System.out.println("2- Lista Clientes");
+             System.out.println("3- Deletar id 3");
+             System.out.println("4- Insere Animal");
+             System.out.println("5- Pega animal do cliente");
+             System.out.println("6- Lista Animais");
+             int opcao = in.nextInt();
+             switch (opcao){
+                 case 1:
+                     Controller.addCliente("Kevin Uehara", "endereco", "teste@teste.com", "(19)1111-1111", "15675-900");
+                     Controller.addCliente("Victor Pereira", "endereco", "vicotr@pereira.com", "(19)2222-2222", "15675-900");
+                     break;
+                 case 2:
+                     listaClientes();
+                     break;
+                 case 3:
+                     Controller.deleteCliente(Controller.getClienteById(3));
+                     break;
+                 case 4:
+                	 Controller.addAnimal("Bob", "M", 2010, 2);
+                	 Controller.addAnimal("Mel", "F", 2014, 2);
+                	 
+                	 Controller.addAnimal("Dog caramelo", "M", 2015, 3);
+                     break;
+                 case 5:
+                	 listaAnimaisOfClients(2);
+                     break;
+                 case 6:
+                     Controller.getAllAnimais();
+                     break;
+                 case 0:
+                     return;
+             }
+         }
     }
-    
     
     /**
      * @param args the command line arguments

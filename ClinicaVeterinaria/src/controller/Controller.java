@@ -16,39 +16,31 @@ import model.ConsultaDAO;
  * @author Plinio Vilela
  */
 public class Controller {
-    public static void setClienteObserver(Observer observer){
-        ClienteDAO.getInstance().addObserver(observer);
+	public static void addCliente(String nome, String endereco, String email, String telefone, String cep){
+        ClienteDAO.getInstance().addCliente(nome, endereco, email, telefone, cep);
     }
     
-    public static void addCliente(Cliente cliente){
-        ClienteDAO.getInstance().addCliente(cliente);
-    }
-    
-    public static Map<Integer, Cliente> getAllClientes(){
+    public static List getAllClientes(){
         return ClienteDAO.getInstance().getAllClientes();
     }
     
-    public static void setAnimalObserver(Observer observer){
-        AnimalDAO.getInstance().addObserver(observer);
+    public static Cliente getClienteById(int id){
+        return ClienteDAO.getInstance().getClienteById(id);
     }
     
-    public static void addAnimal(Animal animal){
-    	AnimalDAO.getInstance().addAnimal(animal);
+    public static void deleteCliente(Cliente cliente){
+        ClienteDAO.getInstance().deleteCliente(cliente);
     }
     
-    public static Map<Integer, Animal> getAllAnimais(){
+    public static void addAnimal(String nome, String sexo, Integer idade, Integer id_cliente){
+    	AnimalDAO.getInstance().addAnimal(nome, id_cliente, idade, sexo);
+    }
+    
+    public static List getAllAnimais(){
         return AnimalDAO.getInstance().getAllAnimais();
     }
     
-    public static void setConsultaObserver(Observer observer){
-        ConsultaDAO.getInstance().addObserver(observer);
-    }
-    
-    public static void addConsulta(Consulta consulta){
-    	ConsultaDAO.getInstance().addConsulta(consulta);
-    }
-    
-    public static Map<Integer, Consulta> getAllConsultas(){
-        return ConsultaDAO.getInstance().getAllConsultas();
+    public static List getAnimaisOfClient(Integer idCliente){
+        return AnimalDAO.getInstance().getAnimaisOfClient(idCliente);
     }
 }

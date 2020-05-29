@@ -3,14 +3,14 @@ package model;
 import java.util.ArrayList;
 
 public class Animal {
-	
+
 	private Integer id;
 
-	private String nome_animal;
+	private String nome;
 
-	private Integer idade_animal;
+	private Integer ano_nasc;
 
-	private Integer sexo_animal;
+	private String sexo;
 
 	private Cliente cliente;
 
@@ -18,33 +18,53 @@ public class Animal {
 
 	private Especie especie;
 
-	public Animal(Integer id, String nome, Integer idade, Integer sexo, Cliente cliente) {
+	public Animal(Integer id, String nome, Integer ano_nasc, String sexo, Cliente cliente) {
+		super();
 		this.id = id;
-		this.nome_animal = nome;
-		this.idade_animal = idade;
-		this.sexo_animal = sexo;
+		this.nome = nome;
+		this.ano_nasc = ano_nasc;
+		this.sexo = sexo;
 		this.cliente = cliente;
-		this.tratamentos = new ArrayList<>();
-	}
-	
-	public Animal(String nome, Integer idade, Integer sexo, Cliente cliente) {
-		this.nome_animal = nome;
-		this.idade_animal = idade;
-		this.sexo_animal = sexo;
-		this.cliente = cliente;
-		this.tratamentos = new ArrayList<>();
-	}
-	
-	public Integer getId() {
-		return this.id;
 	}
 
-	public Especie getEspecie() {
-		return especie;
-	}
-
-	public void setEspecie(Especie especie) {
+	public Animal(Integer id, String nome, Integer ano_nasc, String sexo, Cliente cliente,
+			ArrayList<Tratamento> tratamentos, Especie especie) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.ano_nasc = ano_nasc;
+		this.sexo = sexo;
+		this.cliente = cliente;
+		this.tratamentos = tratamentos;
 		this.especie = especie;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Integer getAno_nasc() {
+		return ano_nasc;
+	}
+
+	public void setAno_nasc(Integer ano_nasc) {
+		this.ano_nasc = ano_nasc;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	public Cliente getCliente() {
@@ -59,37 +79,22 @@ public class Animal {
 		return tratamentos;
 	}
 
-	public void addTratamentos(Tratamento tratamento) {
-		this.tratamentos.add(tratamento);
+	public void setTratamentos(ArrayList<Tratamento> tratamentos) {
+		this.tratamentos = tratamentos;
 	}
 
-	public String getNome_animal() {
-		return nome_animal;
+	public Especie getEspecie() {
+		return especie;
 	}
 
-	public void setNome_animal(String nome_animal) {
-		this.nome_animal = nome_animal;
-	}
-
-	public Integer getIdade_animal() {
-		return idade_animal;
-	}
-
-	public void setIdade_animal(Integer idade_animal) {
-		this.idade_animal = idade_animal;
-	}
-
-	public Integer getSexo_animal() {
-		return sexo_animal;
-	}
-
-	public void setSexo_animal(Integer sexo_animal) {
-		this.sexo_animal = sexo_animal;
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
 	}
 
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", nome_animal=" + nome_animal + ", idade_animal=" + idade_animal + ", sexo_animal="
-				+ sexo_animal + ", cliente=" + cliente + ", tratamentos=" + tratamentos + ", especie=" + especie + "]";
+		return "Animal [id=" + id + ", nome=" + nome + ", idade=" + ano_nasc + ", sexo=" + sexo + ", cliente=" + cliente
+				+ ", tratamentos=" + tratamentos + ", especie=" + especie + "]";
 	}
+
 }
