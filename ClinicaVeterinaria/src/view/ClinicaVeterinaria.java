@@ -8,8 +8,14 @@ package view;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
+
+import org.apache.derby.client.am.SqlException;
+
 import controller.Controller;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -65,8 +71,8 @@ public class ClinicaVeterinaria implements Observer{
              int opcao = in.nextInt();
              switch (opcao){
                  case 1:
-                     Controller.addCliente("Kevin Uehara", "endereco", "teste@teste.com", "(19)1111-1111", "15675-900");
-                     Controller.addCliente("Victor Pereira", "endereco", "vicotr@pereira.com", "(19)2222-2222", "15675-900");
+                     Controller.addCliente("Kevin Uehara", "endereco", "teste@teste.com", "(19)1111-1111", "332322");
+                     Controller.addCliente("Victor Pereira", "endereco", "vicotr@pereira.com", "(19)2222-2222", "323");
                      break;
                  case 2:
                      listaClientes();
@@ -75,13 +81,13 @@ public class ClinicaVeterinaria implements Observer{
                      Controller.deleteCliente(Controller.getClienteById(3));
                      break;
                  case 4:
-                	 Controller.addAnimal("Bob", "M", 2010, 2);
-                	 Controller.addAnimal("Mel", "F", 2014, 2);
+                	 Controller.addAnimal("Bob", "M", 2010, 1);
+                	 Controller.addAnimal("Mel", "F", 2014, 1);
                 	 
-                	 Controller.addAnimal("Dog caramelo", "M", 2015, 3);
+                	 Controller.addAnimal("Dog caramelo", "M", 2015, 2);
                      break;
                  case 5:
-                	 listaAnimaisOfClients(2);
+                	 listaAnimaisOfClients(1);
                      break;
                  case 6:
                      Controller.getAllAnimais();
@@ -91,6 +97,7 @@ public class ClinicaVeterinaria implements Observer{
              }
          }
     }
+    
     
     /**
      * @param args the command line arguments

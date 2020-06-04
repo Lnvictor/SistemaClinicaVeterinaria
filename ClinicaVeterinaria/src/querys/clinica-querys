@@ -1,0 +1,20 @@
+CREATE TABLE APP.CLIENTE (
+	id integer,
+	nome varchar(60),
+	endereco varchar(120),
+	telefone varchar(15),
+	cep varchar(15),
+	email varchar(60)
+);
+
+CREATE TABLE APP.ANIMAL (
+	id integer,
+	id_cliente integer,
+	nome varchar(60),
+	sexo varchar(1),
+	ano_nasc integer
+);
+
+select * from app.animal
+SELECT * FROM APP.ANIMAL WHERE id_cliente = 2
+delete from app.animal

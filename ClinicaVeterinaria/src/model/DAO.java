@@ -4,16 +4,17 @@ import java.sql.*;
 
 public abstract class DAO {
 
-    public static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-    public static final String DBURL = "jdbc:derby://localhost:1527/VetDB;create=true";
+	static String username = "sql10345730";
+    static String pass = "t2DGcZSSTT";
+    static String dbUrl = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10345730";
     private static Connection con;
 
     // metodo para criar a conexao com JavaDB
     public static Connection getConnection() {
         if (con == null) {
             try {
-                Class.forName(DRIVER).newInstance();
-                con = DriverManager.getConnection(DBURL, "APP", "123");
+                //Class.forName(DRIVER).newInstance();
+            	con = DriverManager.getConnection(dbUrl, username, pass);
                 System.out.println(con.getClientInfo());
             } catch (Exception e) {
                 System.err.println("Exception: " + e.getMessage());

@@ -26,7 +26,7 @@ public class ClienteDAO extends DAO {
 		try {
             PreparedStatement stmt;
             int newId = lastId("CLIENTE", "id") + 1;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO cliente (id,nome,endereco,cep,email,telefone) VALUES (?,?,?,?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO CLIENTE (id,nome,endereco,cep,email,telefone) VALUES (?,?,?,?,?,?)");
             stmt.setInt(1, newId);
             stmt.setString(2, nome);
             stmt.setString(3, endereco);
@@ -52,7 +52,7 @@ public class ClienteDAO extends DAO {
 	// RetrieveAll
     public List getAllClientes() {
         List<Cliente> clientes = new ArrayList();
-        ResultSet rs = getResultSet("SELECT * FROM cliente");
+        ResultSet rs = getResultSet("SELECT * FROM CLIENTE");
         try {
             while (rs.next()) {
                 clientes.add(buildObject(rs));
@@ -69,7 +69,7 @@ public class ClienteDAO extends DAO {
     // Sugestao, ao inves de usar um List, usar um Map.
     public Cliente getClienteById(int id) {
         Cliente cliente = null;
-        ResultSet rs = getResultSet("SELECT * FROM cliente WHERE id = " + id);
+        ResultSet rs = getResultSet("SELECT * FROM CLIENTE WHERE id = " + id);
         try {
             if (rs.next()) {
                 cliente = buildObject(rs);
@@ -86,7 +86,7 @@ public class ClienteDAO extends DAO {
     public void update(Cliente cliente) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE cliente SET nome=?, endereco=?, cep=?, email=?, telefone=? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE CLIENTE SET nome=?, endereco=?, cep=?, email=?, telefone=? WHERE id=?");
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEndereco());
             stmt.setString(3, cliente.getCep());
@@ -102,7 +102,7 @@ public class ClienteDAO extends DAO {
     public void deleteCliente(Cliente cliente) {
         PreparedStatement stmt;
         try {
-            stmt = DAO.getConnection().prepareStatement("DELETE FROM cliente WHERE id = ?");
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM CLIENTE WHERE id = ?");
             stmt.setInt(1, cliente.getId());
             executeUpdate(stmt);
         } catch (SQLException ex) {
