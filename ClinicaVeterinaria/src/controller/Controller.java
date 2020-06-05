@@ -16,6 +16,8 @@ import model.ConsultaDAO;
  * @author Plinio Vilela
  */
 public class Controller {
+	
+	//Clientes
 	public static void addCliente(String nome, String endereco, String email, String telefone, String cep){
         ClienteDAO.getInstance().addCliente(nome, endereco, email, telefone, cep);
     }
@@ -32,6 +34,7 @@ public class Controller {
         ClienteDAO.getInstance().deleteCliente(cliente);
     }
     
+    // ANIMAL
     public static void addAnimal(String nome, String sexo, Integer idade, Integer id_cliente){
     	AnimalDAO.getInstance().addAnimal(nome, id_cliente, idade, sexo);
     }
