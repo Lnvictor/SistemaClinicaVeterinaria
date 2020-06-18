@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ClienteDAO extends DAO {
+	
 	private static ClienteDAO instance;
 
 	private ClienteDAO() {
@@ -22,7 +23,7 @@ public class ClienteDAO extends DAO {
 		return instance;
 	}
 
-	public void addCliente(String nome, String endereco, String email, String telefone, String cep) {
+	public int addCliente(String nome, String endereco, String email, String telefone, String cep) {
 		try {
             PreparedStatement stmt;
             int newId = lastId("CLIENTE", "id") + 1;
@@ -34,10 +35,27 @@ public class ClienteDAO extends DAO {
             stmt.setString(5, email);
             stmt.setString(6, telefone);
             executeUpdate(stmt);
+            return newId;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+		
+		return -1;
 	}
+	
+	public int delete(Integer id) {
+		try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM CLIENTE WHERE id=?");
+            stmt.setInt(1, id);
+            executeUpdate(stmt);
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+		return -1;
+    }
 	
 	private Cliente buildObject(ResultSet rs) {
         Cliente cliente = null;

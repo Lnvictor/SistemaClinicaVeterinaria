@@ -35,8 +35,12 @@ public class Controller {
     }
     
     // ANIMAL
-    public static void addAnimal(String nome, String sexo, Integer idade, Integer id_cliente){
-    	AnimalDAO.getInstance().addAnimal(nome, id_cliente, idade, sexo);
+    public static int addAnimal(String nome, String sexo, Integer idade, Integer id_cliente){
+    	return AnimalDAO.getInstance().addAnimal(nome, id_cliente, idade, sexo);
+    }
+    
+    public static Animal getAnimalById(Integer id){
+    	return AnimalDAO.getInstance().getAnimalById(id);
     }
     
     public static List getAllAnimais(){

@@ -12,11 +12,21 @@ import model.Animal;
 import model.AnimalDAO;
 import model.Cliente;
 import model.ClienteDAO;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JTabbedPane;
+import javax.swing.GroupLayout;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /**
  *
  * @author vilela
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+	private JTable table;
 
     /**
      * Creates new form TelaPrincipal
@@ -34,86 +44,59 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Lista de Animais");
-
-        jButton1.setText("Novo Animal");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new AnimalTableModel((ArrayList)AnimalDAO.getInstance().getAllAnimais()));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(192, 192, 192))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(5, 5, 5)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 521, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(14, Short.MAX_VALUE))
         );
+        
+        JPanel clientePanel = new JPanel();
+        tabbedPane.addTab("Clientes", null, clientePanel, null);
+        
+        JPanel animalPanel = new JPanel();
+        tabbedPane.addTab("Animais", null, animalPanel, null);
+        animalPanel.setLayout(null);
+        
+        JLabel lblAnimais = new JLabel("Animais");
+        lblAnimais.setBounds(12, 12, 70, 15);
+        animalPanel.add(lblAnimais);
+        
+        table = new JTable();
+        table.setBounds(12, 110, 482, 108);
+        table.setModel(new AnimalTableModel((ArrayList)Controller.getAllAnimais()));
+        animalPanel.add(table);
+        
+        JButton btnAdicionarAnimal = new JButton("Adicionar Animal");
+        btnAdicionarAnimal.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		int newId = Controller.addAnimal("", "", 0, 0);
+                
+                if (newId >= 0) {
+                    Animal animal = Controller.getAnimalById(newId);
+                    GenericTableModel tb = (GenericTableModel)table.getModel();
+                    tb.addItem(animal);
+                }
+        	}
+        });
+        btnAdicionarAnimal.setBounds(12, 40, 160, 25);
+        animalPanel.add(btnAdicionarAnimal);
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    	
-    	int newId = AnimalDAO.getInstance().addAnimal("", 0, 0, "");
-        
-        if (newId >= 0) {
-            Animal animal = AnimalDAO.getInstance().getAnimalById(newId);
-            GenericTableModel tb = (GenericTableModel)jTable1.getModel();
-            tb.addItem(animal);
-        }
-    }
 
     /**
      * @param args the command line arguments
@@ -149,12 +132,4 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    // End of variables declaration//GEN-END:variables
 }

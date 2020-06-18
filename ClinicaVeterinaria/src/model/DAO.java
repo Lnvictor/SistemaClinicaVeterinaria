@@ -4,9 +4,9 @@ import java.sql.*;
 
 public abstract class DAO {
 
-	static String username = "sql10345730";
-    static String pass = "t2DGcZSSTT";
-    static String dbUrl = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10345730";
+	static String username = "uehara_kevin";
+    static String pass = "8%AluminA3";
+    static String dbUrl = "jdbc:mysql://db4free.net:3306/vetpoo";
     private static Connection con;
 
     // metodo para criar a conexao com JavaDB

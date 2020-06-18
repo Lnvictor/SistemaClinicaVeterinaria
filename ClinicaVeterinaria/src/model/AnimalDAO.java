@@ -46,6 +46,20 @@ public class AnimalDAO extends DAO {
 		return -1;
 	}
 	
+	public int delete(Integer id) {
+		try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM ANIMAL WHERE id=?");
+            stmt.setInt(1, id);
+            executeUpdate(stmt);
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+		return -1;
+    }
+	
 	public void update(String nome, Integer idCliente, Integer anoNasc, String sexo) {
 		try {
             PreparedStatement stmt;

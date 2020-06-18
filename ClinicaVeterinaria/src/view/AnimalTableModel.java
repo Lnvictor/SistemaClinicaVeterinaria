@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import model.Animal;
 import model.AnimalDAO;
-import model.Cliente;
-import model.ClienteDAO;
 
 public class AnimalTableModel extends GenericTableModel {
 
