@@ -9,13 +9,12 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
-import org.apache.derby.client.am.SqlException;
-
 import controller.Controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +23,8 @@ import model.Animal;
 import model.Cliente;
 import model.ClienteDAO;
 import model.Consulta;
+import model.Tratamento;
+import model.Veterinario;
 
 /**
  *
@@ -71,9 +72,8 @@ public class ClinicaVeterinaria implements Observer{
              int opcao = in.nextInt();
              switch (opcao){
                  case 1:
-                     Controller.addCliente("Kevin Uehara", "endereco", "teste@teste.com", "(19)1111-1111", "332322");
-                     Controller.addCliente("Victor Pereira", "endereco", "vicotr@pereira.com", "(19)2222-2222", "323");
-                     break;
+                	 System.out.println(Controller.getAllVeterinarios());
+                	 break;
                  case 2:
                      listaClientes();
                      break;

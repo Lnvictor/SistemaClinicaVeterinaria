@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author vilela
@@ -65,6 +66,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         JPanel clientePanel = new JPanel();
         tabbedPane.addTab("Clientes", null, clientePanel, null);
+        clientePanel.setLayout(null);
+        
         
         JPanel animalPanel = new JPanel();
         tabbedPane.addTab("Animais", null, animalPanel, null);

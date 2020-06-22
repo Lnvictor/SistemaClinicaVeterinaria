@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Tratamento {
+	private int id;
 
 	private Date dat_ini;
 
@@ -60,5 +61,10 @@ public class Tratamento {
 	@Override
 	public String toString() {
 		return "Tratamento [dat_ini=" + dat_ini + ", dat_fim=" + dat_fim + ", consultas=" + consultas + "]";
+	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return this.id;
 	}
 }

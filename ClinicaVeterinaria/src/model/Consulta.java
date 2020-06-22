@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Consulta {
-
+	
+	private int id;
+	
 	private Tratamento tratamento;
 
 	private List<Exame> exames;
@@ -16,7 +18,8 @@ public class Consulta {
 
 	private String historico;
 
-	public Consulta(Date date_con, String historico) {
+	public Consulta(int id, Date date_con, String historico) {
+		this.id = id;
 		this.date_con = date_con;
 		this.historico = historico;
 		this.exames = new ArrayList<>();
@@ -48,6 +51,14 @@ public class Consulta {
 
 	public Date getDate_con() {
 		return date_con;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setDate_con(Date date_con) {

@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Veterinario {
 
+	private int id;
+	
 	private String nom_vet;
 
 	private String end_vet;
@@ -12,12 +14,22 @@ public class Veterinario {
 
 	private List<Consulta> consultas;
 
-	public Veterinario(String nom_vet, String end_vet, String tel_vet) {
+	public Veterinario(int id, String nom_vet, String end_vet, String tel_vet) {
+		this.id = id;
 		this.nom_vet = nom_vet;
 		this.end_vet = end_vet;
 		this.tel_vet = tel_vet;
 		this.consultas = new ArrayList<>();
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public List<Consulta> getConsultas() {
 		return consultas;

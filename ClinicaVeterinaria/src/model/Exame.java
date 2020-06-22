@@ -1,15 +1,26 @@
 package model;
 
 public class Exame {
+	
+	private int id;
 
 	private Consulta consulta;
 
 	private String des_exame;
 
-	public Exame(String des_exame) {
+	public Exame(int id, String des_exame) {
 		this.des_exame = des_exame;
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public Consulta getConsulta() {
 		return consulta;
 	}
