@@ -22,12 +22,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 /**
  *
  * @author vilela
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-	private JTable table;
+	private JTable table_animais;
+	private JTable table_clientes;
 
     /**
      * Creates new form TelaPrincipal
@@ -68,6 +72,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabbedPane.addTab("Clientes", null, clientePanel, null);
         clientePanel.setLayout(null);
         
+        JLabel lblClientes = new JLabel("Clientes");
+        lblClientes.setBounds(12, 12, 70, 15);
+        clientePanel.add(lblClientes);
+        
+        table_clientes = new JTable();
+        table_clientes.setBounds(12, 110, 482, 108);
+        table_clientes.setModel(new ClienteTableModel((ArrayList)Controller.getAllClientes()));
+        clientePanel.add(table_clientes);
         
         JPanel animalPanel = new JPanel();
         tabbedPane.addTab("Animais", null, animalPanel, null);
@@ -77,10 +89,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblAnimais.setBounds(12, 12, 70, 15);
         animalPanel.add(lblAnimais);
         
-        table = new JTable();
-        table.setBounds(12, 110, 482, 108);
-        table.setModel(new AnimalTableModel((ArrayList)Controller.getAllAnimais()));
-        animalPanel.add(table);
+        table_animais = new JTable();
+        table_animais.setBounds(12, 110, 482, 108);
+        table_animais.setModel(new AnimalTableModel((ArrayList)Controller.getAllAnimais()));
+        animalPanel.add(table_animais);
         
         JButton btnAdicionarAnimal = new JButton("Adicionar Animal");
         btnAdicionarAnimal.addActionListener(new ActionListener() {
@@ -89,7 +101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 
                 if (newId >= 0) {
                     Animal animal = Controller.getAnimalById(newId);
-                    GenericTableModel tb = (GenericTableModel)table.getModel();
+                    GenericTableModel tb = (GenericTableModel)table_animais.getModel();
                     tb.addItem(animal);
                 }
         	}
