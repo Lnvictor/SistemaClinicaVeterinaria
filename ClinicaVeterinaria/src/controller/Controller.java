@@ -24,8 +24,8 @@ import model.VeterinarioDAO;
 public class Controller {
 	
 	//Clientes
-	public static void addCliente(String nome, String endereco, String email, String telefone, String cep){
-        ClienteDAO.getInstance().addCliente(nome, endereco, email, telefone, cep);
+    public static int addCliente(String nome, String endereco, String email, String telefone, String cep){
+       return ClienteDAO.getInstance().addCliente(nome, endereco, email, telefone, cep);
     }
     
     public static List getAllClientes(){
