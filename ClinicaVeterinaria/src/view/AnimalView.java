@@ -46,6 +46,7 @@ public class AnimalView extends javax.swing.JFrame {
         adicionarButton = new javax.swing.JButton();
         excluirButton = new javax.swing.JButton();
         tratamentosButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,18 @@ public class AnimalView extends javax.swing.JFrame {
         });
 
         tratamentosButton.setText("Tratamentos");
+        tratamentosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tratamentosButtonActionPerformed(evt);
+            }
+        });
+
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,8 +114,11 @@ public class AnimalView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tratamentosButton)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(voltarButton)
+                        .addGap(30, 30, 30)
+                        .addComponent(tratamentosButton)))
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
@@ -125,7 +141,9 @@ public class AnimalView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(tratamentosButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tratamentosButton)
+                    .addComponent(voltarButton))
                 .addContainerGap())
         );
 
@@ -154,6 +172,27 @@ public class AnimalView extends javax.swing.JFrame {
             tb.removeItem(rowIndex);
         }
     }//GEN-LAST:event_excluirButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaPrincipal2().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void tratamentosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tratamentosButtonActionPerformed
+        int rowIndex = this.table_animais.getSelectedRow();
+        Animal animal = ((AnimalTableModel)this.table_animais.getModel()).getAnimalByRow(rowIndex);
+        
+        if (animal != null){
+            TratamentoView t = new TratamentoView(animal);
+            this.setVisible(false);
+            t.setVisible(true);
+        }
+    }//GEN-LAST:event_tratamentosButtonActionPerformed
 
     
     public void showAnimalsByClient(int id){
@@ -207,5 +246,6 @@ public class AnimalView extends javax.swing.JFrame {
     private javax.swing.JLabel sexoLabel;
     private javax.swing.JTable table_animais;
     private javax.swing.JButton tratamentosButton;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

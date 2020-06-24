@@ -101,4 +101,13 @@ public class Controller {
     public static int addTratamento(long dat_ini, long dat_fim, Animal animal) {
     	return TratamentoDAO.getInstance().addTratamento(dat_ini, dat_fim, animal);
     }
+    
+    
+    public static List<Tratamento> getTratamentosOfAnimal(int id){
+        return TratamentoDAO.getInstance().getTratamentosOfAnimal(id);
+    }
+    
+    public static Tratamento getTratamentoById(int id){
+        return TratamentoDAO.getInstance().getTratamentoById(id);
+    }
 }

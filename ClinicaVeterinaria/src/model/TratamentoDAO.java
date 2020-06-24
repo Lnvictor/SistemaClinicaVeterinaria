@@ -13,6 +13,7 @@ import controller.Controller;
 public class TratamentoDAO extends DAO {
 
 	private static TratamentoDAO instance;
+
 	
 	private TratamentoDAO() {
 		DAO.getConnection();
@@ -51,6 +52,18 @@ public class TratamentoDAO extends DAO {
         }
         return tratamento;
 	}
+        
+        public List<Tratamento> getTratamentosOfAnimal(int id) {
+            List<Tratamento> tratamento = new ArrayList<>();
+            ResultSet rs = getResultSet("SELECT * FROM TRATAMENTO WHERE id_animal = " + id);
+            try {
+        	if (rs.next())
+        		tratamento.add(buildObject(rs));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            return tratamento;
+        }
 
 	private Tratamento buildObject(ResultSet rs) {
 		
@@ -102,7 +115,8 @@ public class TratamentoDAO extends DAO {
         }
 		return false;
 	}
-	
+        
+        
 	public int delete(int id) {
 		try {
             PreparedStatement stmt;
