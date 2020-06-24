@@ -149,7 +149,7 @@ public class AnimalView extends javax.swing.JFrame {
         Animal animal = ((AnimalTableModel)this.table_animais.getModel()).getAnimalByRow(rowIndex);
         
         if (animal != null){
-            Controller.deleteClienteById(animal.getId());
+            Controller.deleteAnimal(animal.getId());
             GenericTableModel tb = (GenericTableModel)table_animais.getModel();
             tb.removeItem(rowIndex);
         }

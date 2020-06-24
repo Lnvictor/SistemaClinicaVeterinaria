@@ -62,7 +62,10 @@ public class Controller {
         return AnimalDAO.getInstance().getAnimaisOfClient(idCliente);
     }
     
-    
+    public static int deleteAnimal(int id){
+        return AnimalDAO.getInstance().delete(id);
+    }
+
     //TODO: Veterinario
     public static int addVeterinario(String nom_vet, String end_vet, String tel_vet) {
     	return VeterinarioDAO.getInstance().addVeterinario(nom_vet, end_vet, tel_vet);
