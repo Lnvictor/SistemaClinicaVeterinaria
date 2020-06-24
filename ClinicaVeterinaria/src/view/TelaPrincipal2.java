@@ -176,8 +176,9 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        AnimalView v = new AnimalView();
+        
         Cliente cliente = ((ClienteTableModel)this.table_client.getModel()).getClientByRow(this.table_client.getSelectedRow());
+        AnimalView v = new AnimalView(cliente);
         
         if (cliente != null){
             v.showAnimalsByClient(cliente.getId());
