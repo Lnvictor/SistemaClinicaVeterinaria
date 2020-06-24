@@ -8,7 +8,6 @@ import java.util.List;
 
 
 /**
- * Não sei se vale a pena essa parada
  * @author vh141
  *
  */

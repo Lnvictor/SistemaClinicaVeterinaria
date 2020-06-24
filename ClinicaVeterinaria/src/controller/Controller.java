@@ -40,6 +40,10 @@ public class Controller {
         ClienteDAO.getInstance().deleteCliente(cliente);
     }
     
+    public static void deleteClienteById(int id){
+        ClienteDAO.getInstance().delete(id);
+    }
+    
     
     // ANIMAL
     public static int addAnimal(String nome, String sexo, Integer idade, Integer id_cliente){

@@ -44,7 +44,7 @@ public class ClienteDAO extends DAO {
 	}
 	
 	public int delete(Integer id) {
-		try {
+            try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("DELETE FROM CLIENTE WHERE id=?");
             stmt.setInt(1, id);

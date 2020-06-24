@@ -68,5 +68,9 @@ public class AnimalTableModel extends GenericTableModel {
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
     }      
+
+    Animal getAnimalByRow(int rowIndex) {
+        return (Animal) vDados.get(rowIndex);
+    }
     
 }

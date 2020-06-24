@@ -45,6 +45,8 @@ public class ClienteTableModel extends GenericTableModel{
             	return cliente.getCep();
             case 4:
             	return cliente.getEmail();
+            case 5:
+                return cliente.getId();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -82,4 +84,8 @@ public class ClienteTableModel extends GenericTableModel{
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
     }      
+    
+    public Cliente getClientByRow(int rowIndex){
+        return (Cliente) vDados.get(rowIndex);
+    }
 }
