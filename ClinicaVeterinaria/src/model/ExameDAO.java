@@ -3,6 +3,7 @@ package model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExameDAO extends DAO{
@@ -14,8 +15,8 @@ public class ExameDAO extends DAO{
 		DAO.getConnection();
 	}
 	
-	public ExameDAO getInstance() {
-		if (this.instance == null) {
+	public static ExameDAO getInstance() {
+		if (instance == null) {
 			instance = new ExameDAO();
 		}
 		return instance;
@@ -54,8 +55,19 @@ public class ExameDAO extends DAO{
 		return exame;
 	}
 	
-	public List<Exame> getAlLExames(){
-		return null;
+	public List<Exame> getExamesOfConsulta(int idConsulta){
+		List<Exame> exame = new ArrayList<>();
+		try {
+			ResultSet rs = getResultSet("SELECT * FROM EXAME WHERE id_consulta = " + idConsulta);
+			
+			while(rs.next()) {
+				
+				exame.add(buildObject(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return exame;
 	}
 
 	private Exame buildObject(ResultSet rs) {

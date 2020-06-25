@@ -5,28 +5,28 @@
  */
 package view;
 
-import java.sql.Date;
+import controller.Controller;
 import java.util.ArrayList;
-import model.Tratamento;
-import model.TratamentoDAO;
+import model.Exame;
+import model.ExameDAO;
 
 /**
  *
  * @author vh141
  */
-public class TratamentoTableModel extends GenericTableModel{
+public class ExameTableModel extends GenericTableModel{
 
-    public TratamentoTableModel(ArrayList vDados) {
-        super(vDados, new String[] {"dat_ini", "dat_fim"});
+    public ExameTableModel(ArrayList vDados) {
+        super(vDados, new String[]{"Consulta", "Descricao"});
     }
-    
+
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return Date.class;
+                return String.class;
             case 1:
-                return Date.class;
+                return Integer.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -34,13 +34,13 @@ public class TratamentoTableModel extends GenericTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Tratamento tratamento = (Tratamento) vDados.get(rowIndex);
+        Exame exame = (Exame) vDados.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-                return tratamento.getDat_ini();
+                return exame.getDes_exame();
             case 1:
-                return tratamento.getDat_fim();
+                return exame.getConsulta().getId();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -48,20 +48,20 @@ public class TratamentoTableModel extends GenericTableModel{
     
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-    	Tratamento tratamento = (Tratamento) vDados.get(rowIndex);
+    	Exame exame = (Exame) vDados.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-            	tratamento.setDat_ini((Date)aValue);
+            	exame.setDes_exame((String) aValue);
                 break;
             case 1:
-            	tratamento.setDat_fim((Date)aValue);
+            	exame.setConsulta(Controller.getConsultaById((Integer) aValue));
                 break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
         
-        TratamentoDAO.getInstance().update(tratamento);
+        ExameDAO.getInstance().update(exame);
     }    
     
     @Override
@@ -70,7 +70,8 @@ public class TratamentoTableModel extends GenericTableModel{
     }
     
     
-    public Tratamento getTratamentoByRow(int rowIndex) {
-        return (Tratamento) vDados.get(rowIndex);
+    public Exame getTratamentoByRow(int rowIndex) {
+        return (Exame) vDados.get(rowIndex);
     }
+    
 }

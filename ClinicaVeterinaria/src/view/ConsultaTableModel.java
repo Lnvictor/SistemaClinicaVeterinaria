@@ -85,4 +85,8 @@ public class ConsultaTableModel extends GenericTableModel{
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
     }
+    
+    public Consulta getConsultaByRow(int rowIndex) {
+        return (Consulta) vDados.get(rowIndex);
+    }
 }

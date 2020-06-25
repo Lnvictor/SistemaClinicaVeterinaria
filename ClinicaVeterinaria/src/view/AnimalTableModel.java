@@ -69,7 +69,7 @@ public class AnimalTableModel extends GenericTableModel {
         return true;
     }      
 
-    Animal getAnimalByRow(int rowIndex) {
+    public Animal getAnimalByRow(int rowIndex) {
         return (Animal) vDados.get(rowIndex);
     }
     

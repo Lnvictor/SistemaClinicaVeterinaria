@@ -8,6 +8,8 @@ package view;
 import controller.Controller;
 import java.util.ArrayList;
 import model.Animal;
+import model.Consulta;
+import model.Tratamento;
 
 /**
  *
@@ -16,7 +18,7 @@ import model.Animal;
 public class TratamentoView extends javax.swing.JFrame {
 
     private Animal animal;
-    
+
     /**
      * Creates new form TratamentoView
      */
@@ -34,33 +36,61 @@ public class TratamentoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        labelTratamento = new javax.swing.JLabel();
+        scrollPaneTratamento = new javax.swing.JScrollPane();
+        tableTratamento = new javax.swing.JTable();
+        labelConsulta = new javax.swing.JLabel();
+        labelExames = new javax.swing.JLabel();
+        scrollPaneExames = new javax.swing.JScrollPane();
+        tableExames = new javax.swing.JTable();
+        scrollPaneConsultas = new javax.swing.JScrollPane();
+        tableConsulta = new javax.swing.JTable();
+        btnRegistrarTratamento = new javax.swing.JButton();
+        btnMarcarConsulta = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        txtDataInicio = new javax.swing.JTextField();
+        txtDataFim = new javax.swing.JTextField();
+        txtIdAnimal = new javax.swing.JTextField();
+        labelDataInicio = new javax.swing.JLabel();
+        labelDataFim = new javax.swing.JLabel();
+        labelIdAnimal = new javax.swing.JLabel();
+        txtVeterinario = new javax.swing.JTextField();
+        txtData = new javax.swing.JTextField();
+        txtHistorico = new javax.swing.JTextField();
+        labelVeterinario = new javax.swing.JLabel();
+        labelDataConsulta = new javax.swing.JLabel();
+        labelHistóricoAnimal = new javax.swing.JLabel();
+        txtExame = new javax.swing.JTextField();
+        txtDescricaoExame = new javax.swing.JTextField();
+        labelExame = new javax.swing.JLabel();
+        labelDescricaoExame = new javax.swing.JLabel();
+        btnMarcarExame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Tratamentos");
+        labelTratamento.setText("Tratamentos");
 
-        jTable1.setModel(new TratamentoTableModel((ArrayList)Controller.getTratamentosOfAnimal(this.animal.getId())));
-        jScrollPane1.setViewportView(jTable1);
+        tableTratamento.setModel(new TratamentoTableModel((ArrayList)Controller.getTratamentosOfAnimal(this.animal.getId())));
+        scrollPaneTratamento.setViewportView(tableTratamento);
 
-        jLabel2.setText("Consultas");
+        labelConsulta.setText("Consultas");
 
-        jLabel3.setText("Exames");
+        labelExames.setText("Exames");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableExames.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Exame", "Descrição"
+            }
+        ));
+        scrollPaneExames.setViewportView(tableExames);
+
+        tableConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,106 +98,169 @@ public class TratamentoView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Veterinário", "Data", "Histórico", "Tratamento"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        scrollPaneConsultas.setViewportView(tableConsulta);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        btnRegistrarTratamento.setText("Registrar Tratamento");
 
-        jButton1.setText("Iniciar Tratamento");
+        btnMarcarConsulta.setText("Marcar Consulta");
 
-        jButton2.setText("Finalizar Tratamento");
+        btnVoltar.setText("Voltar");
 
-        jButton3.setText("Marcar Exame");
+        labelDataInicio.setText("Data de Início");
 
-        jButton4.setText("Marcar Consulta");
+        labelDataFim.setText("Data de Fim");
 
-        jButton5.setText("Voltar");
+        labelIdAnimal.setText("ID do Animal");
+
+        labelVeterinario.setText("Veterinário");
+
+        labelDataConsulta.setText("Data da consulta");
+
+        labelHistóricoAnimal.setText("Histórico do animal");
+
+        labelExame.setText("Exame");
+
+        labelDescricaoExame.setText("Descrição do exame");
+
+        btnMarcarExame.setText("Marcar Exame");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelExames)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(31, 31, 31)
+                                .addComponent(labelTratamento))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegistrarTratamento)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelDataInicio))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelDataFim))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelIdAnimal)))
+                                    .addComponent(labelConsulta)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(scrollPaneConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMarcarConsulta)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(99, 99, 99)
+                                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(scrollPaneExames, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelExame)
+                                            .addComponent(txtExame, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtDescricaoExame, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(labelDescricaoExame))))
+                                    .addComponent(btnMarcarExame)))
+                            .addComponent(scrollPaneTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVoltar))
+                        .addContainerGap(61, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton5)))
-                .addContainerGap(269, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(36, 36, 36)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(549, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelVeterinario)
+                            .addComponent(txtVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(labelDataConsulta)
+                        .addGap(30, 30, 30)
+                        .addComponent(labelHistóricoAnimal)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTratamento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPaneTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDataInicio)
+                    .addComponent(labelDataFim)
+                    .addComponent(labelIdAnimal))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegistrarTratamento)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelExames)
+                    .addComponent(labelConsulta, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollPaneExames, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(282, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(130, 130, 130)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelVeterinario)
+                                .addComponent(labelHistóricoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelDescricaoExame))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtExame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDescricaoExame, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnMarcarConsulta)
+                            .addComponent(btnMarcarExame))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVoltar))
+                    .addComponent(labelExame))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarTratamentoActionPerformed(java.awt.event.ActionEvent evt){
+        int newId = Controller.addTratamento(Integer.parseInt(txtDataInicio.getText()), 
+                Integer.parseInt(txtDataFim.getText()), animal);
+        
+        if(newId >= 0){
+            Tratamento tratamento = Controller.getTratamentoById(newId);
+            GenericTableModel tb = (GenericTableModel)tableTratamento.getModel();
+            tb.addItem(tratamento);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -204,19 +297,34 @@ public class TratamentoView extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JButton btnMarcarConsulta;
+    private javax.swing.JButton btnMarcarExame;
+    private javax.swing.JButton btnRegistrarTratamento;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel labelConsulta;
+    private javax.swing.JLabel labelDataConsulta;
+    private javax.swing.JLabel labelDataFim;
+    private javax.swing.JLabel labelDataInicio;
+    private javax.swing.JLabel labelDescricaoExame;
+    private javax.swing.JLabel labelExame;
+    private javax.swing.JLabel labelExames;
+    private javax.swing.JLabel labelHistóricoAnimal;
+    private javax.swing.JLabel labelIdAnimal;
+    private javax.swing.JLabel labelTratamento;
+    private javax.swing.JLabel labelVeterinario;
+    private javax.swing.JScrollPane scrollPaneConsultas;
+    private javax.swing.JScrollPane scrollPaneExames;
+    private javax.swing.JScrollPane scrollPaneTratamento;
+    private javax.swing.JTable tableConsulta;
+    private javax.swing.JTable tableExames;
+    private javax.swing.JTable tableTratamento;
+    private javax.swing.JTextField txtData;
+    private javax.swing.JTextField txtDataFim;
+    private javax.swing.JTextField txtDataInicio;
+    private javax.swing.JTextField txtDescricaoExame;
+    private javax.swing.JTextField txtExame;
+    private javax.swing.JTextField txtHistorico;
+    private javax.swing.JTextField txtIdAnimal;
+    private javax.swing.JTextField txtVeterinario;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Observer;
@@ -12,6 +12,7 @@ import model.ClienteDAO;
 import model.Consulta;
 import model.ConsultaDAO;
 import model.Exame;
+import model.ExameDAO;
 import model.Tratamento;
 import model.TratamentoDAO;
 import model.Veterinario;
@@ -98,7 +99,7 @@ public class Controller {
     }
     
     //Tratamento
-    public static int addTratamento(long dat_ini, long dat_fim, Animal animal) {
+    public static int addTratamento(Date dat_ini, Date dat_fim, Animal animal) {
     	return TratamentoDAO.getInstance().addTratamento(dat_ini, dat_fim, animal);
     }
     
@@ -109,5 +110,15 @@ public class Controller {
     
     public static Tratamento getTratamentoById(int id){
         return TratamentoDAO.getInstance().getTratamentoById(id);
+    }
+    
+    //Exame
+    
+    public static int addExame(int id_consulta, String desExame){
+        return ExameDAO.getInstance().addExame(Controller.getConsultaById(id_consulta), desExame);
+    }
+    
+    public static List<Exame> getExamesOfConsulta(int idConsulta){
+        return ExameDAO.getInstance().getExamesOfConsulta(idConsulta);
     }
 }

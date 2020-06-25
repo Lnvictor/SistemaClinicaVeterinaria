@@ -38,8 +38,8 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_client = new javax.swing.JTable();
         clientName = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        btn_salvarCliente = new javax.swing.JButton();
+        labelNome = new javax.swing.JLabel();
+        btnAdicionarCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -48,8 +48,8 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
         clientCep = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         clientAddress = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVerAnimais = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +58,12 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
 
         clientName.setToolTipText("");
 
-        jLabel1.setText("Nome");
+        labelNome.setText("Nome");
 
-        btn_salvarCliente.setText("Adicionar Cliente");
-        btn_salvarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionarCliente.setText("Adicionar Cliente");
+        btnAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salvarClienteActionPerformed(evt);
+                btnAdicionarClienteActionPerformed(evt);
             }
         });
 
@@ -83,17 +83,17 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
 
         clientAddress.setToolTipText("");
 
-        jButton1.setText("Ver Animais");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerAnimais.setText("Ver Animais");
+        btnVerAnimais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVerAnimaisActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -104,18 +104,18 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnVerAnimais)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(clientName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
+                            .addComponent(labelNome)
                             .addComponent(jLabel4)
                             .addComponent(clientCep, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_salvarCliente))
+                            .addComponent(btnAdicionarCliente))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
+                            .addComponent(btnExcluir)
                             .addComponent(clientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
@@ -133,7 +133,7 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(labelNome)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,18 +151,18 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
                     .addComponent(clientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_salvarCliente)
-                    .addComponent(jButton2))
+                    .addComponent(btnAdicionarCliente)
+                    .addComponent(btnExcluir))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(jButton1))
+                .addComponent(btnVerAnimais))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_salvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarClienteActionPerformed
+    private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
         int newId = Controller.addCliente(this.clientName.getText(), this.clientAddress.getText(), 
             this.clientEmail.getText(), this.clientPhone.getText(), this.clientCep.getText());
         
@@ -171,10 +171,10 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
             GenericTableModel tb = (GenericTableModel)table_client.getModel();
             tb.addItem(cliente);
         }
-    }//GEN-LAST:event_btn_salvarClienteActionPerformed
+    }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
     // Selecionar Animais por cliente
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVerAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerAnimaisActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         
@@ -185,10 +185,10 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
             v.showAnimalsByClient(cliente.getId());
             v.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVerAnimaisActionPerformed
 
     // Excluir Cliente..
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
         int rowIndex = this.table_client.getSelectedRow();
         Cliente cliente = ((ClienteTableModel)this.table_client.getModel()).getClientByRow(rowIndex);
@@ -198,7 +198,7 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
             GenericTableModel tb = (GenericTableModel)table_client.getModel();
             tb.removeItem(rowIndex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,20 +236,20 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_salvarCliente;
+    private javax.swing.JButton btnAdicionarCliente;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnVerAnimais;
     private javax.swing.JTextField clientAddress;
     private javax.swing.JTextField clientCep;
     private javax.swing.JTextField clientEmail;
     private javax.swing.JTextField clientName;
     private javax.swing.JTextField clientPhone;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelNome;
     private javax.swing.JTable table_client;
     // End of variables declaration//GEN-END:variables
 }
