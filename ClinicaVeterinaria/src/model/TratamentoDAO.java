@@ -75,7 +75,8 @@ public class TratamentoDAO extends DAO {
                 for (Consulta c : Controller.getConsultasByTratamento(tratamento)) {
                         tratamento.addConsultas(c);
                 }
-
+                
+                tratamento.setId(rs.getInt("id"));
                 return  tratamento;
             }catch (SQLException e) {
                 e.printStackTrace();

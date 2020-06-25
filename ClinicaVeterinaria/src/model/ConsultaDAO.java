@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class ConsultaDAO extends DAO {
 	}
 	
 
-	public int addConsulta(Tratamento tratamento, List<Exame> exames, Veterinario veterinario, long date, String historico) {
+	public int addConsulta(Tratamento tratamento, List<Exame> exames, Veterinario veterinario, Date date, String historico) {
 		try {
             PreparedStatement stmt;
             int newId = lastId("CONSULTA", "id") + 1;
@@ -29,7 +29,7 @@ public class ConsultaDAO extends DAO {
             stmt.setInt(1, newId);
             stmt.setInt(2, tratamento.getId());
             stmt.setInt(3, veterinario.getId());
-            stmt.setDate(4, new java.sql.Date(date));
+            stmt.setDate(4, date);
             stmt.setString(5, historico);
             
             executeUpdate(stmt);
@@ -83,23 +83,23 @@ public class ConsultaDAO extends DAO {
 	
 	
 	public List<Consulta> getConsultasByTratamento(Tratamento tratamento){
-		List<Consulta> consulta = new ArrayList<>();
-		int idTratamento = tratamento.getId();
-		ResultSet rs = getResultSet("SELECT * FROM CONSULTA where tratamento = " + idTratamento);
-		try {
-        	if (rs.next())
-        		consulta.add(buildObject(rs));
+            List<Consulta> consulta = new ArrayList<>();
+            int idTratamento = tratamento.getId();
+            ResultSet rs = getResultSet("SELECT * FROM CONSULTA where tratamento = " + idTratamento);
+            try {
+                while (rs.next())
+                    consulta.add(buildObject(rs));
             
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return consulta;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return consulta;
 	}
 	
 	
 	public Consulta getConsultaById(int id) {
 		Consulta consulta = null;
-        ResultSet rs = getResultSet("SELECT * FROM ANIMAL WHERE id = " + id);
+        ResultSet rs = getResultSet("SELECT * FROM CONSULTA WHERE id = " + id);
         try {
         	if (rs.next())
         		consulta  = buildObject(rs);

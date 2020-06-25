@@ -26,6 +26,14 @@ public class Tratamento {
 		this.consultas = consultas;
 	}
 
+        public void setId(int id) {
+            this.id = id;
+        }
+        
+        public int getId() {
+            return this.id;
+        }
+        
 	public Animal getAnimal() {
 		return animal;
 	}
@@ -61,10 +69,5 @@ public class Tratamento {
 	@Override
 	public String toString() {
 		return "Tratamento [dat_ini=" + dat_ini + ", dat_fim=" + dat_fim + ", consultas=" + consultas + "]";
-	}
-
-	public int getId() {
-		// TODO Auto-generated method stub
-		return this.id;
 	}
 }

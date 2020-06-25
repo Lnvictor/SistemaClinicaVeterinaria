@@ -5,29 +5,27 @@
  */
 package view;
 
-import controller.Controller;
-import java.sql.Date;
 import java.util.ArrayList;
-import model.Consulta;
-import model.Exame;
-import model.ExameDAO;
+import model.Veterinario;
+import model.VeterinarioDAO;
 
 /**
  *
  * @author vh141
  */
-public class ExameTableModel extends GenericTableModel{
-
-    public ExameTableModel(ArrayList vDados) {
-        super(vDados, new String[]{"Consulta", "Descricao"});
+public class VeterinarioTableModel extends GenericTableModel{
+    public VeterinarioTableModel(ArrayList vDados) {
+        super(vDados, new String[] {"Nome", "Endereço", "Telefone"});
     }
-
+    
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return Date.class;
+                return String.class;
             case 1:
+                return String.class;
+            case 2:
                 return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -36,13 +34,15 @@ public class ExameTableModel extends GenericTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Exame exame = (Exame) vDados.get(rowIndex);
-
+        Veterinario v = (Veterinario) vDados.get(rowIndex);
+        
         switch (columnIndex) {
             case 0:
-                return exame.getConsulta().getDate_con();
+                return v.getNom_vet();
             case 1:
-                return exame.getDes_exame();
+                return v.getEnd_vet();
+            case 2:
+                return v.getTel_vet();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -50,20 +50,23 @@ public class ExameTableModel extends GenericTableModel{
     
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-    	Exame exame = (Exame) vDados.get(rowIndex);
+    	Veterinario veterinario = (Veterinario) vDados.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-            	exame.setConsulta((Consulta) aValue);
+            	veterinario.setNom_vet((String) aValue);
                 break;
             case 1:
-            	exame.setDes_exame((String) aValue);
+            	veterinario.setEnd_vet((String) aValue);
+                break;
+            case 2:
+            	veterinario.setTel_vet((String) aValue);
                 break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
         
-        ExameDAO.getInstance().update(exame);
+        VeterinarioDAO.getInstance().update(veterinario);
     }    
     
     @Override
@@ -71,9 +74,7 @@ public class ExameTableModel extends GenericTableModel{
         return true;
     }
     
-    
-    public Exame getExameByRow(int rowIndex) {
-        return (Exame) vDados.get(rowIndex);
+    public Veterinario getVeterinarioByRow(int rowIndex) {
+        return (Veterinario) vDados.get(rowIndex);
     }
-    
 }

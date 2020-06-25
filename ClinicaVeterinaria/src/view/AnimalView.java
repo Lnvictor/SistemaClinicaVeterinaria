@@ -188,7 +188,7 @@ public class AnimalView extends javax.swing.JFrame {
         Animal animal = ((AnimalTableModel)this.table_animais.getModel()).getAnimalByRow(rowIndex);
         
         if (animal != null){
-            TratamentoView t = new TratamentoView(animal);
+            TratamentoView t = new TratamentoView(animal, this);
             this.setVisible(false);
             t.setVisible(true);
         }

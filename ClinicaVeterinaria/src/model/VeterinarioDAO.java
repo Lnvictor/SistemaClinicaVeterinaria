@@ -26,7 +26,7 @@ public class VeterinarioDAO extends DAO{
 		try {
 			PreparedStatement stmt;
             int newId = lastId("VETERINARIO", "id") + 1;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO VETERINARIO (id, nom_vet, end_vet, tel_Vet) VALUES (?,?,?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO VETERINARIO (id, nom_vet, end_vet, tel_Vet) VALUES (?,?,?,?)");
             stmt.setInt(1, newId);
             stmt.setString(2, nom_vet);
             stmt.setString(3, end_vet);
@@ -53,11 +53,11 @@ public class VeterinarioDAO extends DAO{
         return veterinario;
 	}
 	
-	public List<Veterinario> getAllVeterinarios(){
-		List<Veterinario> veterinario = new ArrayList<>();
+    public List<Veterinario> getAllVeterinarios(){
+	List<Veterinario> veterinario = new ArrayList<>();
         ResultSet rs = getResultSet("SELECT * FROM VETERINARIO");
         try {
-        	if (rs.next())
+        	while (rs.next())
         		veterinario.add(buildObject(rs));
             
         } catch (SQLException e) {

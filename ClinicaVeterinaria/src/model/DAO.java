@@ -42,7 +42,7 @@ public abstract class DAO {
         return update;
     }
 
-    protected int lastId(String tableName, String primaryKey) {
+    public int lastId(String tableName, String primaryKey) {
         Statement s;
         ResultSet rs = null;
         int lastId = -1;

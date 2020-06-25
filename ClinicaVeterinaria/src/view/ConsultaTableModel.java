@@ -20,19 +20,17 @@ import model.Veterinario;
 public class ConsultaTableModel extends GenericTableModel{
 
     public ConsultaTableModel(ArrayList vDados) {
-        super(vDados, new String[] {"tratamento", "Veterinario", "date_con", "historico"});
+        super(vDados, new String[] {"Veterinario", "Data", "Historico"});
     }
     
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return Integer.class;
-            case 1:
                 return String.class;
-            case 2:
+            case 1:
                 return Date.class;
-            case 3:
+            case 2:
                 return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -45,12 +43,10 @@ public class ConsultaTableModel extends GenericTableModel{
         
         switch (columnIndex) {
             case 0:
-                return consulta.getTratamento().getId();
-            case 1:
                 return consulta.getVeterinario().getNom_vet();
-            case 2:
+            case 1:
                 return consulta.getDate_con();
-            case 3:
+            case 2:
                 return consulta.getHistorico();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -63,15 +59,12 @@ public class ConsultaTableModel extends GenericTableModel{
 
         switch (columnIndex) {
             case 0:
-            	consulta.setTratamento((Tratamento)Controller.getTratamentoById((int)aValue));
-                break;
-            case 1:
             	consulta.setVeterinario((Veterinario)aValue);
                 break;
-            case 2:
+            case 1:
             	consulta.setDate_con((Date)aValue);
                 break;
-            case 3:
+            case 2:
                 consulta.setHistorico((String) aValue);
                 break;
             default:

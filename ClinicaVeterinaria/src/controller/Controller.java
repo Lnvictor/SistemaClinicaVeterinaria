@@ -82,7 +82,7 @@ public class Controller {
     
     
     //Consultas
-    public static int addConsulta(Tratamento tratamento, List<Exame> exames, Veterinario veterianrio, long date, String historico) {
+    public static int addConsulta(Tratamento tratamento, List<Exame> exames, Veterinario veterianrio, Date date, String historico) {
     	return ConsultaDAO.getInstance().addConsulta(tratamento, exames, veterianrio, date, historico);
     }
     
@@ -114,11 +114,15 @@ public class Controller {
     
     //Exame
     
-    public static int addExame(int id_consulta, String desExame){
-        return ExameDAO.getInstance().addExame(Controller.getConsultaById(id_consulta), desExame);
+    public static int addExame(Consulta consulta, String desExame){
+        return ExameDAO.getInstance().addExame(consulta, desExame);
     }
     
     public static List<Exame> getExamesOfConsulta(int idConsulta){
         return ExameDAO.getInstance().getExamesOfConsulta(idConsulta);
+    }
+    
+    public static Exame getExameById(int id){
+         return ExameDAO.getInstance().getExameById(id);
     }
 }

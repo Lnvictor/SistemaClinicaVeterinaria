@@ -9,6 +9,7 @@ package view;
 import javax.swing.JTable;
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.*;
 /**
  *
@@ -176,14 +177,19 @@ public class TelaPrincipal2 extends javax.swing.JFrame {
     // Selecionar Animais por cliente
     private void btnVerAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerAnimaisActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        int row = this.table_client.getSelectedRow();
         
-        Cliente cliente = ((ClienteTableModel)this.table_client.getModel()).getClientByRow(this.table_client.getSelectedRow());
-        AnimalView v = new AnimalView(cliente);
+        if (row >= 0){
+            Cliente cliente = ((ClienteTableModel)this.table_client.getModel()).getClientByRow(row);
+            AnimalView v = new AnimalView(cliente);
         
-        if (cliente != null){
+        
+            this.setVisible(false);
             v.showAnimalsByClient(cliente.getId());
             v.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Você precisa selecionar um cliente", "Disclaimer", 1);
         }
     }//GEN-LAST:event_btnVerAnimaisActionPerformed
 
